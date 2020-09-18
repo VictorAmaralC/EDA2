@@ -19,10 +19,10 @@ int main(){
 
     int *valores = malloc (n*sizeof(int));
 
-    for(int i=0; i<n; i++){
+    for(int i=0, j = n; i<n; i++, j--){
         int v;
         scanf("%d", &v);
-        valores[i]=v;
+        valores[i] = v;
     }
 
     ordena(valores, 0, n-1);
@@ -37,12 +37,5 @@ int main(){
 
 //Desenvolvimento funcoes
 void ordena(int *v, int l, int r){
-    if(l == r) return;
-    int min = l;
-    for(int j = l+1; j <= r; j++){
-        if(less(v[j],v[min]))
-            min = j;
-    }
-    exch(v[min], v[l]);
-    ordena(v, l+1, r);
+    
 }

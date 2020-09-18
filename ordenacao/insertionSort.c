@@ -37,12 +37,16 @@ int main(){
 
 //Desenvolvimento funcoes
 void ordena(int *v, int l, int r){
-    if(l == r) return;
-    int min = l;
-    for(int j = l+1; j <= r; j++){
-        if(less(v[j],v[min]))
-            min = j;
+    for(int i=r; i >l; i--){
+        cmpexch(v[i-1], v[i]);
     }
-    exch(v[min], v[l]);
-    ordena(v, l+1, r);
+    for(int i = l+2; i<=r; i++){
+        int j= i; 
+        item tmp = v[j];
+        while(less(tmp, v[j-1])){
+            v[j] = v[j-1];
+            j--;
+        }
+        v[j] = tmp;
+    }
 }

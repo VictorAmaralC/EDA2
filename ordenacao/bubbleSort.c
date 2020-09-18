@@ -7,7 +7,7 @@ typedef int item;
 #define key(A) (A)
 #define less(A,B) (key(A) < key(B))
 #define exch(A,B) {item t=A; A=B, B=t;}
-#define cmpexch(A,B) {if(less(B,A)) exch(A,B);}
+#define cmpexch(A,B,C) {if(less(B,A)){exch(A,B); C++;}}
 
 //Funcoes
 void ordena(int *v, int l, int r);
@@ -37,12 +37,12 @@ int main(){
 
 //Desenvolvimento funcoes
 void ordena(int *v, int l, int r){
-    if(l == r) return;
-    int min = l;
-    for(int j = l+1; j <= r; j++){
-        if(less(v[j],v[min]))
-            min = j;
+    for(int i = l; i < r; i++){
+        int troca = 0;
+        for(int j = l; j < r; j++){
+            cmpexch(v[j], v[j+1], troca);
+        }
+        if(troca == 0) return; 
+        //Se nao houver trocas, o vetor ja esta ordenado e encerra-se a funcao
     }
-    exch(v[min], v[l]);
-    ordena(v, l+1, r);
 }
