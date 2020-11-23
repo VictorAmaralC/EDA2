@@ -38,9 +38,14 @@ int main(){
 
 //Desenvolvimento funcoes
 void ordena(int *v, int l, int r){
-    int j;
     if(r <= l) return;
-    j = separa(v, l, r);
+    
+    //mediana de 3 melhorada
+    cmpexch(v[l], v[r-1]);
+    cmpexch(v[l], v[r]);
+    cmpexch(v[r-1], v[r]);
+    
+    int j = separa(v, l+1, r-1);
     
     ordena(v, l, j-1);
     ordena(v, j+1, r);

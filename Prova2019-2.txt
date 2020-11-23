@@ -1,0 +1,62 @@
+(Teclado americano - Favor ignorar erros relacionados a gramatica)
+
+1)a) Nao, o quicksort pode ter alguns probremas se relacionarmarmos
+o pivoteamento da funcao, no pior caso o qsort pode ter a complexi
+dade de (n2), tambem citando o tamanho do vetor, funcoes como o 
+bubblesort e selectionsort podem ser mais rapidos.
+
+b)Selecionar o melhor pivoteamento para a questao a ser resolvida
+
+c)A estabilidade de um algoritmo esta relacionado a organizacao do
+vetor pos-operacao, caso o vetor apos a operacao mantenha as posicoes
+originais em caso de valores equivalente, o algoritmo eh estavel
+
+2)
+#include <stdio.h>
+#include <stdlib.h>
+
+#define lesseq (a,b) a <= b
+#define less (a,b) a < b
+
+#define item int
+
+item *intercala2(item *v1, int n1, item *v2, int n2){
+    item *result = malloc ((n1+n2)*sizeof(item));
+    int p1 = 0, p2 = 0, rp = 0;
+
+    while(p1 < n1 && p2 < n2){
+        int min;
+        if(less(v1[p1], v2[p2])){
+            result[rp] = v1[p1];
+            p1++;    
+        } else {
+            result[rp] = v2[p2];
+            p2++;
+        }
+        rp++;
+    }
+
+    while(p1 < v1){
+        result[rp] = v1[p1];
+        p1++;
+        rp++;
+    }
+
+    while(p2 < v2){
+        result[rp] = v2[p2];
+        p2++;
+        rp++;
+    }
+
+    return result;
+}
+
+3)
+#include <stdio.h>
+#include <stdlib.h>
+
+typedef struct semente{
+    int id;
+    int nota;
+}semente;
+
